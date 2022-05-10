@@ -8,7 +8,8 @@ export const App = () => (
   <Canvas shadows dpr={[1, 2]} camera={{ position: [-10, 0, 15], fov: 30 }}>
     <OrbitControls />
 
-    <Porsche scale={1.6} position={[-0.5, -0.18, 0]} rotation={[0, Math.PI / 5, 0]} />
+    <Porsche scale={0.6} position={[-2, -0.78, 0]} />
+    <Porsche scale={0.6} position={[2, -0.78, 0]} />
     <spotLight position={[0, 15, 0]} angle={0.3} penumbra={1} castShadow intensity={2} shadow-bias={-0.0001} />
     <ambientLight intensity={0.2} />
     <ContactShadows resolution={1024} frames={1} position={[0, -1.16, 0]} scale={10} blur={3} opacity={1} far={10} />
@@ -17,15 +18,10 @@ export const App = () => (
     <Environment frames={Infinity} resolution={256}>
       {/* Ceiling */}
       <Lightformer intensity={0.75} rotation-x={Math.PI / 2} position={[0, 5, -9]} scale={[10, 10, 1]} />
-      {/* <MovingSpots /> */}
       {/* Sides */}
       <Lightformer intensity={4} rotation-y={Math.PI / 2} position={[-5, 1, -1]} scale={[20, 0.1, 1]} />
       <Lightformer rotation-y={Math.PI / 2} position={[-5, -1, -1]} scale={[20, 0.5, 1]} />
       <Lightformer rotation-y={-Math.PI / 2} position={[10, 1, 0]} scale={[20, 1, 1]} />
-      {/* Accent (red) */}
-      {/* <Float speed={5} floatIntensity={2} rotationIntensity={2}>
-        <Lightformer form="ring" color="red" intensity={1} scale={10} position={[-15, 4, -18]} target={[0, 0, 0]} />
-      </Float> */}
       {/* Background */}
       <mesh scale={100}>
         <sphereGeometry args={[1, 64, 64]} />
@@ -49,7 +45,8 @@ function Porsche(props) {
     applyProps(materials.coat, { envMapIntensity: 4, roughness: 0.5, metalness: 1 })
     applyProps(materials.paint, { roughness: 0.5, metalness: 0.8, color: '#555', envMapIntensity: 2 })
   }, [nodes, materials])
-  return <primitive object={scene} {...props} />
+  const copiedScene = useMemo(() => scene.clone(), [scene])
+  return <primitive object={copiedScene} {...props} />
 }
 
 function CameraRig({ v = new THREE.Vector3() }) {
