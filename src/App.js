@@ -17,15 +17,15 @@ export const App = () => (
     <Environment frames={Infinity} resolution={256}>
       {/* Ceiling */}
       <Lightformer intensity={0.75} rotation-x={Math.PI / 2} position={[0, 5, -9]} scale={[10, 10, 1]} />
-      <MovingSpots />
+      {/* <MovingSpots /> */}
       {/* Sides */}
       <Lightformer intensity={4} rotation-y={Math.PI / 2} position={[-5, 1, -1]} scale={[20, 0.1, 1]} />
       <Lightformer rotation-y={Math.PI / 2} position={[-5, -1, -1]} scale={[20, 0.5, 1]} />
       <Lightformer rotation-y={-Math.PI / 2} position={[10, 1, 0]} scale={[20, 1, 1]} />
       {/* Accent (red) */}
-      <Float speed={5} floatIntensity={2} rotationIntensity={2}>
+      {/* <Float speed={5} floatIntensity={2} rotationIntensity={2}>
         <Lightformer form="ring" color="red" intensity={1} scale={10} position={[-15, 4, -18]} target={[0, 0, 0]} />
-      </Float>
+      </Float> */}
       {/* Background */}
       <mesh scale={100}>
         <sphereGeometry args={[1, 64, 64]} />
