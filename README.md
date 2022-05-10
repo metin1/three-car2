@@ -11,6 +11,8 @@ This project is currently in development. Users can see a 3D car demo.
 
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.
 
+`git clone https://github.com/metin1/three-car2`
+
 Installation:
 
 `npm install`
